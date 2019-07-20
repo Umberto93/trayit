@@ -1,0 +1,31 @@
+<ion-content>
+    <h1 class="trayit"></h1>
+    <h2>Sign In</h2>
+    <ion-card>
+        <ion-item lines="none">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input
+                name="email"
+                type="email"
+            ></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input
+                name="password"
+                type="password"
+            ></ion-input>
+        </ion-item>
+        <ion-button
+            class="submit"
+            expand="block"
+            type="submit"
+        >
+            Accedi
+        </ion-button>
+    </ion-card>
+    <small>
+        Non hai un account?
+        <a routerLink="/signup">Registrati!</a>
+    </small>
+</ion-content>

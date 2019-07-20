@@ -1,0 +1,67 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+
+:root {
+  --ion-font-family: "Open Sans", sans-serif;
+
+  --trayit-color-primary: #ffd80c;
+  --trayit-color-primary-dark: #ffd20c;
+
+  --trayit-color-secondary: black;
+  --trayit-color-tertiary: #808080;
+
+  --trayit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+  --trayit-transition-ease-out: 0.25s ease-out;
+}
+
+/** General **/
+a {
+  color: var(--trayit-color-primary);
+  text-decoration: none;
+  transition: color var(--trayit-transition-ease-out);
+
+  &:hover {
+    color: var(--trayit-color-primary-dark);
+  }
+}
+
+/** Utils **/
+.hide {
+    display: none;
+}
+
+/** Buttons **/
+ion-button {
+  &.submit {
+    --background: var(--trayit-color-primary);
+    --background-hover: var(--trayit-color-primary-dark);
+    --box-shadow: none;
+    height: 50px;
+    margin-top: 20px;
+    color: var(--trayit-color-secondary);
+    font-weight: 700;
+  }
+}
+
+/** Alerts **/
+ion-alert {
+  .alert-radio-icon {
+    border-color: var(--trayit-color-tertiary) !important;
+  }
+
+  [aria-checked="true"] .alert-radio-icon {
+    border-color: var(--trayit-color-primary) !important;
+  }
+
+  .alert-radio-inner {
+    background: var(--trayit-color-primary) !important;
+  }
+  
+  .alert-button {
+    color: var(--trayit-color-secondary) !important;
+  }
+}

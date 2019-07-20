@@ -1,0 +1,103 @@
+<ion-content>
+    <h1 class="trayit"></h1>
+    <h2>Sign Up</h2>
+    <ion-card>
+        <form
+            #signup="ngForm"
+            [formGroup]="signupForm"
+            (submit)="onSignup($event)"
+        >
+            <ion-item lines="none">
+                <ion-label position="stacked">Nome</ion-label>
+                <ion-input
+                    formControlName="firstname"
+                    name="firstname"
+                    type="text"
+                    required="true"
+                >
+                    <ion-icon
+                        class="ion-input-status"
+                        [class.hide]="!signup.submitted && !signupForm.get('firstname').dirty || 
+                            !signup.submitted && signupForm.get('firstname').touched"
+                        [class.valid]="signupForm.get('firstname').valid"
+                        [name]="signupForm.get('firstname').valid ? 'checkmark-circle' : 'alert'"
+                    ></ion-icon>
+                </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Cognome</ion-label>
+                <ion-input
+                    formControlName="lastname"
+                    name="lastname"
+                    type="text"
+                    required="true"
+                >
+                    <ion-icon
+                        class="ion-input-status"
+                        [class.hide]="!signup.submitted && !signupForm.get('lastname').dirty || 
+                            !signup.submitted && signupForm.get('lastname').touched"
+                        [class.valid]="signupForm.get('lastname').valid"
+                        [name]="signupForm.get('lastname').valid ? 'checkmark-circle' : 'alert'"
+                    ></ion-icon>
+                </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input
+                    formControlName="email"
+                    name="email"
+                    type="email"
+                    required="true"
+                >
+                    <ion-icon
+                        class="ion-input-status"
+                        [class.hide]="!signup.submitted && !signupForm.get('email').dirty || 
+                            !signup.submitted && signupForm.get('email').touched"
+                        [class.valid]="signupForm.get('email').valid"
+                        [name]="signupForm.get('email').valid ? 'checkmark-circle' : 'alert'"
+                    ></ion-icon>
+                </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Password</ion-label>
+                <ion-input
+                    formControlName="password"
+                    name="password"
+                    type="password"
+                    required="true"
+                >
+                    <ion-icon
+                        class="ion-input-status"
+                        [class.hide]="!signup.submitted && !signupForm.get('password').dirty || 
+                            !signup.submitted && signupForm.get('password').touched"
+                        [class.valid]="signupForm.get('password').valid"
+                        [name]="signupForm.get('password').valid ? 'checkmark-circle' : 'alert'"
+                    ></ion-icon>
+                </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Regime Alimentare</ion-label>
+                <ion-select
+                    name="diet"
+                    value="standard"
+                >
+                    <ion-select-option value="standard">Standard</ion-select-option>
+                    <ion-select-option value="celiac">Celiaco</ion-select-option>
+                    <ion-select-option value="vegetarian">Vegetariano</ion-select-option>
+                    <ion-select-option value="vegan">Vegano</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-button
+                class="submit"
+                expand="block"
+                type="submit"
+            >
+                Registrati
+            </ion-button>
+        </form>
+    </ion-card>
+    <small>
+        Hai già un account?
+        <a routerLink="/login">Accedi!</a>
+    </small>
+</ion-content>

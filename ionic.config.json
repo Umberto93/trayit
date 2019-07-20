@@ -1,0 +1,7 @@
+{
+  "name": "trayit",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
