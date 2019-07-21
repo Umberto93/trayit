@@ -39,7 +39,9 @@ ion-button {
   &.submit {
     --background: var(--trayit-color-primary);
     --background-hover: var(--trayit-color-primary-dark);
+    --background-focused: var(--trayit-color-primary-dark);
     --box-shadow: none;
+    --color-focused: var(--trayit-color-secondary);
     height: 50px;
     margin-top: 20px;
     color: var(--trayit-color-secondary);

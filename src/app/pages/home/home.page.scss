@@ -51,6 +51,30 @@ ion-card {
     color: var(--trayit-color-primary);
   }
 
+  ion-checkbox {
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-width: 1px;
+    --background-checked: var(--trayit-color-primary);
+    --border-color-checked: var(--trayit-color-primary);
+    position: absolute;
+    top: 14px;
+    right: 0;
+    margin: 0;
+    width: 14px;
+    height: 14px;
+  
+    &:before {
+      content: 'Show';
+      position: absolute;
+      right: calc(100% + 5px);
+      color: var(--trayit-color-tertiary);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }  
+
   ion-input,
   ion-select {
     --padding-top: 10px;

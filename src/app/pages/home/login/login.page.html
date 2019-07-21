@@ -1,0 +1,47 @@
+<ion-content>
+    <h1 class="trayit"></h1>
+    <h2>Sign In</h2>
+    <ion-card>
+        <form
+            [formGroup]="loginForm"
+            (submit)="onLogin()"
+        >
+            <ion-item lines="none">
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input
+                    formControlName="email"
+                    type="email"
+                    required="true"
+                >
+                    <ion-icon
+                        class="ion-input-status"
+                        [class.hide]="loginForm.get('email').pristine"
+                        [class.valid]="loginForm.get('email').valid"
+                        [name]="loginForm.get('email').valid ? 'checkmark-circle' : 'alert'"
+                    ></ion-icon>
+                </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Password</ion-label>
+                <ion-checkbox #showPassword></ion-checkbox>
+                <ion-input
+                    formControlName="password"
+                    [type]="showPassword.checked ? 'text' : 'password'"
+                    required="true"
+                >
+                </ion-input>
+            </ion-item>
+            <ion-button
+                class="submit"
+                expand="block"
+                type="submit"
+            >
+                Accedi
+            </ion-button>
+        </form>
+    </ion-card>
+    <small>
+        Non hai un account?
+        <a routerLink="/signup">Registrati!</a>
+    </small>
+</ion-content>
