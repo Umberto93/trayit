@@ -1,7 +1,7 @@
 <ion-content>
     <h1 class="trayit"></h1>
     <h2>Sign In</h2>
-    <ion-card>
+    <ion-card class="container">
         <form
             [formGroup]="loginForm"
             (submit)="onLogin()"
@@ -32,7 +32,7 @@
                 </ion-input>
             </ion-item>
             <ion-button
-                class="submit"
+                class="primary"
                 expand="block"
                 type="submit"
             >

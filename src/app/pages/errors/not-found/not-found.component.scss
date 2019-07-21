@@ -1,0 +1,22 @@
+ion-card {
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: none;
+    text-align: center;
+
+    img {
+        width: auto;
+        margin: 0 auto;
+    }
+
+    ion-card-title {
+        margin-top: 20px;
+        font-size: 50px;
+        font-weight: 600;
+    }
+
+    ion-button {
+        width: 40%;
+        margin: 20px auto;
+    }
+}
