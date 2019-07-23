@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { SelectionPage } from './selection/selection.component';
 import { HeaderComponent } from '../header/header.component';
+import { Logged } from 'src/app/services/guards/logged.service';
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import { HeaderComponent } from '../header/header.component';
         RouterModule.forChild([
             {
                 path: '',
+                canActivate: [Logged],
                 children: [
                     {
                         path: '',

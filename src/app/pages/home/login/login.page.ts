@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,8 +13,9 @@ export class LoginPage {
     loginForm: FormGroup;
 
     constructor(
-        public formBuilder: FormBuilder,
-        public userService: UserService
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private userService: UserService
     ) { 
         this.loginForm = this.formBuilder.group({
             email: new FormControl('', [
@@ -36,7 +38,7 @@ export class LoginPage {
             password: this.loginForm.value.password
         }).subscribe(
             res => {
-                console.log(res);
+                this.router.navigateByUrl('/menu/selection');
             }
         )
     }

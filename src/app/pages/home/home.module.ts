@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { LoginPage } from './login/login.page';
 import { SignupPage } from './signup/signup.page';
+import { Guest } from 'src/app/services/guards/guest.service';
 
 @NgModule({
     imports: [
@@ -16,18 +17,27 @@ import { SignupPage } from './signup/signup.page';
         RouterModule.forChild([
             {
                 path: '',
-                redirectTo: 'login'
-            },
-            {
-                path: 'login',
-                pathMatch: 'full',
-                component: LoginPage
-            },
-            {
-                path: 'signup',
-                pathMatch: 'full',
-                component: SignupPage
+                canActivate: [Guest],
+                children: [
+                    {
+                        path: '',
+                        redirectTo: 'login'
+                    },
+                    {
+                        path: 'login',
+                        pathMatch: 'full',
+                        canActivate: [Guest],
+                        component: LoginPage
+                    },
+                    {
+                        path: 'signup',
+                        pathMatch: 'full',
+                        canActivate: [Guest],
+                        component: SignupPage
+                    }
+                ]
             }
+
         ])
     ],
     declarations: [

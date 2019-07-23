@@ -10,8 +10,9 @@
                 <ion-label position="stacked">Email</ion-label>
                 <ion-input
                     formControlName="email"
-                    type="email"
                     required="true"
+                    type="email"
+                    (keyup.enter)="onLogin()"
                 >
                     <ion-icon
                         class="ion-input-status"
@@ -26,8 +27,9 @@
                 <ion-checkbox #showPassword></ion-checkbox>
                 <ion-input
                     formControlName="password"
-                    [type]="showPassword.checked ? 'text' : 'password'"
                     required="true"
+                    [type]="showPassword.checked ? 'text' : 'password'"
+                    (keyup.enter)="onLogin()"
                 >
                 </ion-input>
             </ion-item>

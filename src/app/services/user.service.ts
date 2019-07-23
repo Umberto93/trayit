@@ -37,12 +37,14 @@ export class UserService {
             })
         }).pipe(
             map((user: User) => {
-                user.isLogged = true;
                 this.storage.setUser(user);
                 return user;
             })
         );
     }
 
+    public logout(): void {
+        this.storage.removeUser();
+    }
 
 }
