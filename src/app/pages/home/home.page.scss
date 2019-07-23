@@ -1,10 +1,5 @@
 ion-content {
-  --padding-top: 15px;
-  --padding-bottom: 15px;
-  --padding-start: 15px;
-  --padding-end: 15px;
   --background: linear-gradient(to bottom, var(--trayit-color-primary) 300px, transparent 300px);
-
   text-align: center;
 
   h1 {
@@ -20,11 +15,6 @@ ion-content {
 }
 
 ion-card {
-  --background: white;
-
-  padding: 20px 25px;
-
-  box-shadow: var(--trayit-box-shadow);
   text-align: justify;
 
   ion-item {
@@ -53,15 +43,16 @@ ion-card {
     --border-width: 1px;
     --background-checked: var(--trayit-color-primary);
     --border-color-checked: var(--trayit-color-primary);
+
     position: absolute;
     top: 14px;
     right: 0;
     margin: 0;
     width: 14px;
     height: 14px;
-  
+
     &:before {
-      content: 'Show';
+      content: "Show";
       position: absolute;
       right: calc(100% + 5px);
       color: var(--trayit-color-tertiary);
@@ -70,7 +61,7 @@ ion-card {
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-  }  
+  }
 
   ion-input,
   ion-select {

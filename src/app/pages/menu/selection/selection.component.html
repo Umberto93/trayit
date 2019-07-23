@@ -1,0 +1,120 @@
+<app-header title="Scelta del pasto"></app-header>
+<ion-content>
+    <img src="../../../../assets/images/swipe.svg">
+    <ion-slides [options]="slideOptions">
+        <ion-slide>
+            <ion-card class="card container">
+                <ion-card-header>
+                    <ion-card-subtitle>Pasto</ion-card-subtitle>
+                    <ion-card-title>Tradizionale</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <div>
+                        Il pasto tradizionale è composto da:
+                        <ul>
+                            <li>
+                                <strong>1</strong>
+                                primo piatto
+                            </li>
+                            <li>
+                                <strong>1</strong>
+                                secondo
+                            </li>
+                            <li>
+                                <strong>1</strong>
+                                contorno
+                            </li>
+                            <li>
+                                <strong>1</strong>
+                                frutto
+                            </li>
+                            <li>
+                                <strong>2</strong>
+                                confezioni di pane
+                            </li>
+                        </ul>
+                    </div>
+                    <ion-button
+                        class="primary"
+                        expand="block"
+                    >
+                        Seleziona
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+        <ion-slide>
+            <ion-card class="card container">
+                <ion-card-header>
+                    <ion-card-subtitle>Pasto</ion-card-subtitle>
+                    <ion-card-title>Alternativo</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <div>
+                        Il pasto alternativo è a scelta tra:
+                        <ul>
+                            <li class="list-group">
+                                <strong>Cestino</strong>
+                                <ul>
+                                    <li>
+                                        <strong>1</strong>
+                                        confezioni monoporzione di affettati
+                                    </li>
+                                    <li>
+                                        <strong>1</strong>
+                                        confezioni monoporzione di formaggi
+                                    </li>
+
+                                    <li>
+                                        <strong>1</strong>
+                                        succo di frutta
+                                    </li>
+                                    <li>
+                                        <strong>1</strong>
+                                        frutto di stagione
+                                    </li>
+                                    <li>
+                                        <strong>1</strong>
+                                        bibita
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group">
+                                <strong>Pizza</strong>
+                                <ul>
+                                    <li>
+                                        <strong>1</strong>
+                                        pizza (margherita | speciale)
+                                    </li>
+                                    <li>
+                                        <strong>1</strong>
+                                        bibita
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group">
+                                <strong>Brioche gelato</strong>
+                                <ul>
+                                    <li>
+                                        <strong>1</strong>
+                                        brioche gelato
+                                    </li>
+                                    <li>
+                                        <strong>1</strong>
+                                        bottiglia di acqua (50 cl.)
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <ion-button
+                        class="primary"
+                        expand="block"
+                    >
+                        Seleziona
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

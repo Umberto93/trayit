@@ -5,7 +5,6 @@ import { NotFoundPage } from './not-found.component';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({
-    declarations: [NotFoundPage],
     imports: [
         CommonModule,
         IonicModule,
@@ -15,6 +14,7 @@ import { IonicModule } from '@ionic/angular';
                 component: NotFoundPage
             }
         ])
-    ]
+    ],
+    declarations: [NotFoundPage]
 })
 export class NotFoundModule { }

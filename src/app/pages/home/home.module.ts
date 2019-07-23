@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HeaderComponent } from '../header/header.component';
 import { LoginPage } from './login/login.page';
 import { SignupPage } from './signup/signup.page';
 
@@ -32,7 +31,6 @@ import { SignupPage } from './signup/signup.page';
         ])
     ],
     declarations: [
-        HeaderComponent,
         LoginPage,
         SignupPage
     ]

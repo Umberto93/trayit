@@ -31,16 +31,39 @@ a {
 
 /** Utils **/
 .hide {
-    display: none;
+  display: none;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/** Contents **/
+ion-content {
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+/** Cards **/
+ion-card {
+  &.card {
+    --background: white;
+    padding: 20px 25px;
+    box-shadow: var(--trayit-box-shadow);
+  }
 }
 
 /** Buttons **/
@@ -71,7 +94,7 @@ ion-alert {
   .alert-radio-inner {
     background: var(--trayit-color-primary) !important;
   }
-  
+
   .alert-button {
     color: var(--trayit-color-secondary) !important;
   }
