@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpOptions } from '../interfaces/http-options';
+import { HttpOptions } from '../../interfaces/http-options';
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +9,7 @@ import { HttpOptions } from '../interfaces/http-options';
 export class HttpService {
 
     private readonly api: string;
+    
     readonly hostname = 'localhost';
     readonly port = 8080;
     readonly context = 'canteen';

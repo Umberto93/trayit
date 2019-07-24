@@ -1,11 +1,11 @@
-<app-header title="Scelta del pasto"></app-header>
+<app-header title="Scelta del menu"></app-header>
 <ion-content>
     <img src="../../../../assets/images/swipe.svg">
     <ion-slides [options]="slideOptions">
         <ion-slide>
             <ion-card class="card container">
                 <ion-card-header>
-                    <ion-card-subtitle>Pasto</ion-card-subtitle>
+                    <ion-card-subtitle>Menu</ion-card-subtitle>
                     <ion-card-title>Tradizionale</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
@@ -37,6 +37,7 @@
                     <ion-button
                         class="primary"
                         expand="block"
+                        routerLink="/menu/composition"
                     >
                         Seleziona
                     </ion-button>
@@ -46,7 +47,7 @@
         <ion-slide>
             <ion-card class="card container">
                 <ion-card-header>
-                    <ion-card-subtitle>Pasto</ion-card-subtitle>
+                    <ion-card-subtitle>Menu</ion-card-subtitle>
                     <ion-card-title>Alternativo</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
@@ -110,6 +111,8 @@
                     <ion-button
                         class="primary"
                         expand="block"
+                        routerLink="/menu/composition"
+                        [queryParams]="{ alternative: true }"
                     >
                         Seleziona
                     </ion-button>

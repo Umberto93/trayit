@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SignupForm } from '../interfaces/signup-form';
-import { LoginForm } from '../interfaces/login-form';
-import { User } from '../interfaces/user';
+import { SignupForm } from '../../interfaces/signup-form';
+import { LoginForm } from '../../interfaces/login-form';
+import { User } from '../../interfaces/user';
 import { map } from 'rxjs/operators';
-import { StorageService } from './storage.service';
+import { StorageService } from '../client/storage.service';
 
 @Injectable({
     providedIn: 'root'

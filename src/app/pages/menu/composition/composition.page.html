@@ -1,0 +1,56 @@
+<app-header title="Composizione del menu"></app-header>
+<ion-content>
+    <section class="items">
+        <ion-chip *ngFor="let item of selectedItems">
+            <ion-label>{{item}}</ion-label>
+        </ion-chip>
+    </section>
+    <section>
+        <ion-toolbar>
+            <ion-segment scrollable>
+                <ion-segment-button
+                    *ngFor="let course of menu.items | keyvalue: noSort; index as i"
+                    [checked]="i === activeIndex"
+                    (ionSelect)="slideTo(i)"
+                >
+                    <ion-label>
+                        {{menuService.translateCategory(course.key)}}
+                    </ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+        <ion-slides
+            #slides
+            (ionSlideWillChange)="updateTab()"
+        >
+            <ion-slide *ngFor="let course of menu.items | keyvalue: noSort; index as i">
+                <ion-grid>
+                    <ion-row *ngFor="let item of course.value">
+                        <ion-col class="align-left">
+                            <ion-label>{{item.name}}</ion-label>
+                            <small>{{item.price}}</small>
+                        </ion-col>
+                        <ion-col class="counter align-right">
+                            <ion-icon
+                                name="add"
+                                class="counter-button"
+                                (click)="increaseCounter(item.name, counter.el)"
+                            ></ion-icon>
+                            <ion-badge
+                                #counter
+                                data-value="0"
+                            >
+                                {{counter.el.dataset.value}}
+                            </ion-badge>
+                            <ion-icon
+                                name="remove"
+                                class="counter-button"
+                                (click)="decreaseCounter(item.name, counter.el)"
+                            ></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+        </ion-slides>
+    </section>
+</ion-content>
