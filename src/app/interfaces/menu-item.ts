@@ -5,6 +5,7 @@ export interface MenuItem {
     name: string,
     description?: string,
     price?: number,
+    rating?: number,
     standard?: boolean,
     celiac?: boolean,
     vegetarian?: boolean,

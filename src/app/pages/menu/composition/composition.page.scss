@@ -1,115 +1,104 @@
 ion-content {
-    --padding-top: 0;
-    --padding-bottom: 0;
-    --padding-start: 0;
-    --padding-end: 0;
-}
+    position: relative;
 
-section {
-    padding: 15px;
-
-    &.items {
-        background: var(--trayit-color-light);
+    &:before {
+        width: calc(100% / 3 * 2);
     }
-}
 
-ion-segment {
-    ion-segment-button {
-        --padding-start: 0;
-        --padding-end: 0;
-        --background-hover: none;
-        min-width: auto;
-        margin-right: 20px;
-        position: relative;
+    ion-grid {
+        margin: 0;
+        padding: {
+            left: 40px;
+            right: 30px;
+            bottom: 15px;
+        }
 
-        color: var(--trayit-tertiary);
-        font-weight: 700;
-        letter-spacing: 0;
+        ion-row {
+            background: white;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 4px;
+            box-shadow: var(--trayit-box-shadow);
 
-        &.segment-button-checked {
-            --background-checked: none;
-            --background-hover: none;
-            --color-checked: var(--trayit-color-secondary);
-            --indicator-color-checked: none !important;
+            ion-col {
+                display: flex;
+                flex-direction: column;
+                padding-left: 40px;
 
-            &:before {
-                width: 100%;
+                &:before {
+                    content: url("../../../../assets/images/plate.png");
+                    position: absolute;
+                    left: -50px;
+                }
+
+                img {
+                    position: absolute;
+                    left: -30px;
+                    top: 20px;
+                }
             }
-        }
-
-        &:before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            height: 2px;
-            width: 0;
-            background: var(--trayit-color-primary);
-            transition: width var(--trayit-transition-ease-out);
-        }
-
-        ion-label {
-            margin-top: 0;
-            margin-bottom: 0;
-            padding: 0 10px;
-        }
-    }
-}
-
-ion-grid {
-    margin-top: 30px;
-    padding: 0;
-    font-size: 16px;
-
-    ion-row {
-        padding: 15px;
-
-        &:nth-child(odd) {
-            background: var(--trayit-color-light);
-        }
-    }
-
-    ion-col {
-        display: flex;
-        padding: 0;
-
-        &.align-left {
-            flex-direction: column;
 
             ion-label {
-                color: var(--trayit-color-secondary);
-                font-weight: 700;
+                font-size: 16px;
+                font-weight: 600;
                 line-height: 24px;
-                text-transform: capitalize;
-                cursor: pointer;
+
+                &:first-letter {
+                    text-transform: uppercase;
+                }
+            }
+
+            ion-text {
+                height: auto;
+                margin: 10px 0;
+                padding-right: 25px;
+                color: var(--trayit-color-tertiary);
+                font-size: 14px;
+                line-height: 24px;
+                text-align: justify;
             }
 
             small {
-                margin-top: 5px;
+                margin-top: 2px;
                 color: var(--trayit-color-tertiary);
                 font-size: 14px;
+                font-weight: 600;
 
                 &:after {
                     content: " €";
+                    font-size: 10px;
+                    vertical-align: super;
                 }
             }
-        }
 
-        &.counter {
-            justify-content: flex-end;
-            align-items: center;
-
-            ion-icon {
-                padding: 5px;
-                background: rgba(0, 0, 0, 0.05);
-                border-radius: 4px;
-                color: var(--trayit-color-secondary);
-                cursor: pointer;
+            @keyframes zoom-in-out {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.2);
+                }
+                100% {
+                    transform: scale(1);
+                }
             }
 
-            ion-badge {
-                --background: none;
-                --color: var(--trayit-color-secondary);
-                margin: 0 10px;
+            ion-icon.add {
+                position: absolute;
+                bottom: 21px;
+                right: -30px;
+                box-sizing: border-box;
+                padding: 10px;
+                background: var(--trayit-color-primary);
+                box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+                border-radius: 50%;
+                color: white;
+                font-size: 22px;
+                cursor: pointer;
+
+                &:hover {
+                    animation: zoom-in-out 0.25s ease-in-out;
+                }
             }
         }
     }

@@ -6,16 +6,20 @@
 // and used throughout the application.
 
 :root {
-    --ion-font-family: "Open Sans", sans-serif;
+    --trayit-font-primary: "Open Sans", sans-serif;
 
     --trayit-color-primary: #ffd80c;
     --trayit-color-primary-dark: #ffd20c;
     --trayit-color-secondary: black;
     --trayit-color-tertiary: #808080;
     --trayit-color-light: #f6f7f8;
+    --trayit-color-medium: #e6e7e8;
 
     --trayit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+    --trayit-box-shadow-secondary: 0px 5px 15px 0px rgba(0, 0, 0, 0.05);
     --trayit-transition-ease-out: 0.25s ease-out;
+
+    --ion-font-family: var(--trayit-font-primary);
 }
 
 /** General **/

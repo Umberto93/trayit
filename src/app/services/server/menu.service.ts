@@ -18,9 +18,9 @@ export class MenuService {
 
     public translateCategory(category: string): string {
         switch (category) {
-            case 'first': return 'primo';
-            case 'main': return 'secondo';
-            case 'side': return 'contorno';
+            case 'first': return 'primi';
+            case 'main': return 'secondi';
+            case 'side': return 'contorni';
             case 'basket': return 'basket';
             default: return category;
         }

@@ -1,0 +1,34 @@
+<div class="popover">
+    <div class="popover-header">
+        <h2 class="popover-title">{{item.name}}</h2>
+    </div>
+    <div class="popover-message">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </div>
+    <div class="popover-inputs">
+        <ion-icon
+            name="remove"
+            (click)="counter.stepDown()"
+        ></ion-icon>
+        <input
+            #counter
+            type="number"
+            min="0"
+            max="5"
+            value="0"
+            disabled
+        >
+        <ion-icon
+            name="add"
+            (click)="counter.stepUp()"
+        ></ion-icon>
+    </div>
+    <div class="popover-buttons">
+        <ion-button
+            class="primary"
+            expand="block"
+        >
+            Aggiungi al vassoio
+        </ion-button>
+    </div>
+</div>

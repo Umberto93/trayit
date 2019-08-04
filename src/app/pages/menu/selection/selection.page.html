@@ -1,7 +1,9 @@
-<app-header title="Scelta del menu"></app-header>
 <ion-content>
-    <img src="../../../../assets/images/swipe.svg">
-    <ion-slides [options]="slideOptions">
+    <app-header></app-header>
+    <ion-slides
+        pager="true"
+        [options]="slideOptions"
+    >
         <ion-slide>
             <ion-card class="card container">
                 <ion-card-header>

@@ -1,0 +1,25 @@
+<div class="rating-wrapper">
+    <ion-label
+        class="avg"
+        [hidden]="!avg"
+    >
+        {{value}}
+        <span>/</span>
+        {{max}}
+    </ion-label>
+    <ion-buttons class="rating">
+        <ion-button
+            *ngFor="let star of stars; index as i"
+            class="rating-button"
+            [class.selected]="i < selected"
+            (mouseenter)="onMouseEnter(i)"
+            (mouseleave)="onMouseLeave()"
+        >
+            <ion-icon
+                slot="icon-only"
+                name="star"
+                class="rating-star"
+            ></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</div>

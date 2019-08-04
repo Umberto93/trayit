@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
+import { SlideOptions } from '../slide.config';
 
 @Component({
     selector: 'app-selection',
     templateUrl: './selection.page.html',
-    styleUrls: ['./selection.page.scss'],
+    styleUrls: ['../menu.page.scss', './selection.page.scss'],
 })
 export class SelectionPage {
 
     slideOptions: Object;
 
     constructor() {
-        this.slideOptions = {
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            spaceBetween: 20,
-            grabCursor: true,
-            autoHeight: true
-        }
+        this.slideOptions = SlideOptions;
     }
 
 }

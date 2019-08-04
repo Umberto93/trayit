@@ -6,6 +6,8 @@ import { Logged } from 'src/app/services/guards/logged.service';
 import { HeaderComponent } from '../header/header.component';
 import { SelectionPage } from './selection/selection.page';
 import { CompositionPage } from './composition/composition.page';
+import { RatingComponent } from '../../components/rating/rating.component';
+import { CounterPopoverComponent } from './composition/counter-popover/counter-popover.component';
 
 @NgModule({
     imports: [
@@ -37,7 +39,12 @@ import { CompositionPage } from './composition/composition.page';
     declarations: [
         HeaderComponent,
         SelectionPage,
-        CompositionPage
+        CompositionPage,
+        RatingComponent,
+        CounterPopoverComponent
+    ],
+    entryComponents: [
+        CounterPopoverComponent
     ]
 })
 export class MenuModule { }

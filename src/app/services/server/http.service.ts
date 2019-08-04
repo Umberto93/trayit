@@ -10,7 +10,7 @@ export class HttpService {
 
     private readonly api: string;
     
-    readonly hostname = 'localhost';
+    readonly hostname = '192.168.1.46';
     readonly port = 8080;
     readonly context = 'canteen';
 

@@ -1,28 +1,34 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuService } from 'src/app/services/server/menu.service';
 import { MenuCategory } from 'src/app/interfaces/menu-category';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, PopoverController } from '@ionic/angular';
+import { SlideOptions } from '../slide.config';
+import { MenuItem } from 'src/app/interfaces/menu-item';
+import { CounterPopoverComponent } from './counter-popover/counter-popover.component';
 
 @Component({
     selector: 'app-composition',
     templateUrl: './composition.page.html',
-    styleUrls: ['./composition.page.scss'],
+    styleUrls: ['../menu.page.scss', './composition.page.scss'],
 })
 export class CompositionPage {
-    @ViewChild('slides') slides: IonSlides;
+    @ViewChild(IonSlides) slides: IonSlides;
 
-    menu: MenuCategory;
+    titles: Array<String>;
+    slideOptions: Object;
     activeIndex: number;
-    selectedItems: Array<string>;
+    menu: MenuCategory;
 
     constructor(
         private route: ActivatedRoute,
-        private menuService: MenuService
+        private menuService: MenuService,
+        private popoverController: PopoverController
     ) {
-        this.menu = {} as MenuCategory;
+        this.titles = [];
+        this.slideOptions = SlideOptions;
         this.activeIndex = 0;
-        this.selectedItems = [];
+        this.menu = {} as MenuCategory;
     }
 
     public ionViewWillEnter(): void {
@@ -31,6 +37,7 @@ export class CompositionPage {
                 const menu = this.menuService.launch;
                 const alternative = params.alternative || false;
 
+                this.titles = alternative ? ['Pizza', 'Extra'] : ['Primi', 'Secondi', 'Contorni', 'Extra'];
                 this.menuService.getMenu(menu, alternative).subscribe(
                     (menu: MenuCategory) => {
                         this.menu = menu;
@@ -45,30 +52,21 @@ export class CompositionPage {
         return 0;
     }
 
-    public slideTo(index: number): void {
-        this.slides.slideTo(index);
+    public onSlideWillChange(): void {
+        this.slides.getActiveIndex().then((index: number) => {
+            this.activeIndex = index;
+        });
     }
 
-    public updateTab(): void {
-        this.slides.getActiveIndex().then(
-            index => {
-                this.activeIndex = index;
-            }
-        );
-    }
-
-    public increaseCounter(item: string, counter: HTMLIonBadgeElement) {
-        let counterValue = parseInt(counter.dataset.value);
-        counter.dataset.value = (counterValue + 1).toString();
-        
-        if (this.selectedItems.indexOf(item) === -1) {
-            this.selectedItems.push(item);
-        }
-    }
-
-    public decreaseCounter(item: string, counter: HTMLIonBadgeElement) {
-        let counterValue = parseInt(counter.dataset.value);
-        counterValue -= +(counterValue > 0);
-        counter.dataset.value = counterValue.toString();
+    public presentAlert(item: MenuItem): void {
+        this.popoverController.create({
+            component: CounterPopoverComponent,
+            componentProps: {
+                item: item
+            },
+            cssClass: 'counter-popover'
+        }).then(alert => {
+            alert.present();
+        });
     }
 }
