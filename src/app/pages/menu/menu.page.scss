@@ -1,4 +1,5 @@
 ion-content {
+    --background: none;
     position: relative;
 
     @keyframes background-moving {
@@ -23,7 +24,6 @@ ion-content {
         background: url('../../../assets/images/food_pattern.png'), var(--trayit-color-primary);
 
         animation: background-moving 0.25s;
-        z-index: 1;
     }
 
     ion-slides {

@@ -6,28 +6,36 @@
         (ionSlideWillChange)="onSlideWillChange()"
     >
         <ion-slide *ngFor="let course of menu.items | keyvalue: noSort; index as i">
-            <ion-grid>
-                <ion-row
-                    #row
-                    aria-expanded="false"
+            <ion-list lines="none">
+                <ion-item
                     *ngFor="let item of course.value"
+                    class="item"
                 >
-                    <ion-col class="align-left">
+                    <ion-thumbnail
+                        class="dish"
+                        slot="start"
+                    >
                         <img src="../../../../assets/images/rigatoni_siciliana.png">
-                        <ion-label>{{item.name}}</ion-label>
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h2 class="name">{{item.name}}</h2>
+                        <p class="ingredients">
+                            <span *ngFor="let ingredient of item.ingredients">{{ingredient.name}}</span>
+                        </p>
                         <rating
                             [max]="5"
                             [value]="item.rating"
                         ></rating>
-                        <small>{{item.price}}</small>
-                        <ion-icon
-                            class="add"
-                            name="add"
-                            (click)="presentAlert(item)"
-                        ></ion-icon>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+                        <small class="price">{{item.price}}</small>
+                    </ion-label>
+                    <ion-icon
+                        class="add"
+                        name="add"
+                        (click)="presentAlert(item)"
+                    ></ion-icon>
+                </ion-item>
+            </ion-list>
         </ion-slide>
     </ion-slides>
 </ion-content>
+<app-footer></app-footer>

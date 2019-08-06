@@ -1,0 +1,21 @@
+ion-tabs.nav {
+    top: initial;
+
+    height: 56px;
+    z-index: 99;
+
+    ion-tab-bar {
+        --background: white;
+        --border: none;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    ion-tab-button {
+        --color: var(--trayit-color-secondary);
+        --color-selected: var(--trayit-color-primary);
+
+        ion-label {
+            letter-spacing: initial;
+        }
+    }
+}

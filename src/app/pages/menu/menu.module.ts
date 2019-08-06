@@ -8,6 +8,7 @@ import { SelectionPage } from './selection/selection.page';
 import { CompositionPage } from './composition/composition.page';
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CounterPopoverComponent } from './composition/counter-popover/counter-popover.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { CounterPopoverComponent } from './composition/counter-popover/counter-p
     ],
     declarations: [
         HeaderComponent,
+        FooterComponent,
         SelectionPage,
         CompositionPage,
         RatingComponent,

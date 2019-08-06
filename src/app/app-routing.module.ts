@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     { path: '', loadChildren: './pages/home/home.module#HomePageModule' },
-    { path: 'menu', loadChildren: './pages/menu/menu.module#MenuModule'},
-    { path: '**', loadChildren: './pages/errors/not-found/not-found.module#NotFoundModule'}
+    { path: 'menu', loadChildren: './pages/menu/menu.module#MenuModule' },
+    { path: '**', loadChildren: './pages/errors/not-found/not-found.module#NotFoundModule' }
 ];
 
 @NgModule({

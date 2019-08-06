@@ -13,7 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RequestInterceptor } from './services/server/request-interceptor.service';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent
+    ],
     entryComponents: [],
     imports: [
         BrowserModule,
