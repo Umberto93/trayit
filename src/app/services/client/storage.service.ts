@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { User } from 'src/app/interfaces/user';
 import { Summary } from 'src/app/interfaces/summary';
+import { MenuCategory } from 'src/app/interfaces/menu-category';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,18 @@ export class StorageService {
         this.storage.remove('user');
     }
 
+    public setMenu(menu: MenuCategory): void {
+        this.storage.set('menu', menu);
+    }
+
+    public getMenu(): Promise<MenuCategory> {
+        return this.storage.get('menu');
+    }
+
+    public removeMenu(): void {
+        this.storage.remove('menu');
+    }
+
     public getSummary(): Promise<Summary> {
         return this.storage.get('summary');
     }
@@ -35,4 +48,5 @@ export class StorageService {
     public removeSummary(): void {
         this.storage.remove('summary');
     }
+    
 }

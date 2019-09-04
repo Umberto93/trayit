@@ -1,0 +1,38 @@
+<ion-content>
+    <app-header
+        title="Il tuo vassoio"
+        price="{{summary.price}}"
+    ></app-header>
+    <ion-list
+        *ngFor="let course of summary.items | keyvalue: noSort"
+        lines="none"
+    >
+        <ion-item
+            *ngFor="let item of course.value; index as i"
+            class="item"
+        >
+            <ion-thumbnail
+                class="dish"
+                slot="start"
+            >
+                <img src="http://localhost:8080/canteen/items/{{item.id}}/image">
+            </ion-thumbnail>
+            <ion-label>
+                <h2 class="name">{{item.name}}</h2>
+                <p class="ingredients">
+                    <span *ngFor="let ingredient of item.ingredients">{{ingredient.name}}</span>
+                </p>
+                <rating
+                    [max]="5"
+                    [value]="item.rating"
+                ></rating>
+            </ion-label>
+            <ion-icon
+                class="action remove"
+                name="trash"
+                (click)="presentAlert(course.key, i)"
+            ></ion-icon>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<app-footer></app-footer>

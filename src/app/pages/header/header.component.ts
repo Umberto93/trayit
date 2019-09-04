@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/server/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
     selector: 'app-header',
@@ -9,15 +9,63 @@ import { UserService } from 'src/app/services/server/user.service';
 })
 export class HeaderComponent {
     @Input() title: string;
+    @Input() filterButton: string;
+    @Input() price: string;
 
     constructor(
         private router: Router,
-        private userService: UserService
+        private actionSheetController: ActionSheetController,
     ) { }
 
-    public logout(): void {
-        this.userService.logout();
-        this.router.navigateByUrl('/login');
+    public filter(): void {
+        this.actionSheetController.create({
+            header: 'Filtra per regime alimentare',
+            buttons: [
+                {
+                    text: 'Standard',
+                    handler: () => {
+                        this.router.navigate([], {
+                            queryParams: { diet: 'standard' },
+                            queryParamsHandling: 'merge'
+                        })
+                    }
+                },
+                {
+                    text: 'Celiaco',
+                    handler: () => {
+                        this.router.navigate([], {
+                            queryParams: { diet: 'celiac' },
+                            queryParamsHandling: 'merge'
+                        })
+                    }
+                },
+                {
+                    text: 'Vegetariano',
+                    handler: () => {
+                        this.router.navigate([], {
+                            queryParams: { diet: 'vegetarian' },
+                            queryParamsHandling: 'merge'
+                        })
+                    }
+                },
+                {
+                    text: 'Vegano',
+                    handler: () => {
+                        this.router.navigate([], {
+                            queryParams: { diet: 'vegan' },
+                            queryParamsHandling: 'merge'
+                        })
+                    }
+                },
+                {
+                    text: 'Chiudi',
+                    role: 'cancel'
+                }
+            ],
+            cssClass: 'diet-filter'
+        }).then(actionSheet => {
+            actionSheet.present();
+        });
     }
 
 }

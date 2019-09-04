@@ -2,9 +2,21 @@
     <ion-toolbar>
         <ion-title>{{title || ''}}</ion-title>
         <ion-icon
+            *ngIf="filterButton"
+            class="filter"
             name="options"
             slot="end"
-            (click)="logout()"
+            (click)="filter()"
         ></ion-icon>
+        <ion-item
+            *ngIf="price"
+            class="price"
+            color="undefined"
+            lines="none"
+            slot="end"
+        >
+            <ion-label>{{price}}</ion-label>
+            <ion-icon name="logo-euro"></ion-icon>
+        </ion-item>
     </ion-toolbar>
 </ion-header>

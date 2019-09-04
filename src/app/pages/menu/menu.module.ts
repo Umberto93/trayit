@@ -9,6 +9,8 @@ import { CompositionPage } from './composition/composition.page';
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CounterPopoverComponent } from './composition/counter-popover/counter-popover.component';
 import { FooterComponent } from '../footer/footer.component';
+import { SummaryPage } from './summary/summarypage';
+import { MorePopoverComponent } from '../footer/more-popover/more-popover.component';
 
 @NgModule({
     imports: [
@@ -32,6 +34,11 @@ import { FooterComponent } from '../footer/footer.component';
                         path: 'composition',
                         pathMatch: 'full',
                         component: CompositionPage
+                    },
+                    {
+                        path: 'summary',
+                        pathMatch: 'full',
+                        component: SummaryPage
                     }
                 ]
             }
@@ -42,11 +49,14 @@ import { FooterComponent } from '../footer/footer.component';
         FooterComponent,
         SelectionPage,
         CompositionPage,
+        SummaryPage,
         RatingComponent,
-        CounterPopoverComponent
+        CounterPopoverComponent,
+        MorePopoverComponent
     ],
     entryComponents: [
-        CounterPopoverComponent
+        CounterPopoverComponent,
+        MorePopoverComponent
     ]
 })
 export class MenuModule { }

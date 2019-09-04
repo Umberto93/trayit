@@ -37,6 +37,7 @@ export class UserService {
             })
         }).pipe(
             map((user: User) => {
+                console.log(user);
                 this.storage.setUser(user);
                 return user;
             })

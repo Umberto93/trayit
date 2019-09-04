@@ -115,3 +115,8 @@ ion-alert {
         color: var(--trayit-color-secondary) !important;
     }
 }
+
+ion-popover.counter-popover {
+    --width: 100%;
+    --max-width: 300px;
+}

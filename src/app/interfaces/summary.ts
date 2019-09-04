@@ -3,6 +3,6 @@ import { MenuAlternative } from './menu-alternative';
 
 export interface Summary {
     alternative: boolean,
-    price: number,
-    items: MenuTraditional | MenuAlternative
+    items: MenuTraditional | MenuAlternative,
+    price: number
 }

@@ -15,10 +15,19 @@ ion-header {
             text-transform: uppercase;
         }
 
-        ion-icon {
+        ion-icon.filter {
             margin-right: 15px;
             font-size: 24px;
             cursor: pointer;
+        }
+
+        ion-item.price {
+            ion-icon {
+                margin-right: 5px;
+                
+                font-size: 18px;
+                vertical-align: middle;
+            }
         }
     }
 }

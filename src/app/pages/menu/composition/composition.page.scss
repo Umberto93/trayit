@@ -43,6 +43,7 @@ ion-content {
 
                 img {
                     margin-bottom: 10px;
+                    object-fit: none;
                 }
             }
 
@@ -59,8 +60,11 @@ ion-content {
             }
 
             .ingredients {
+                padding-right: 10px;
+                
                 color: var(--trayit-color-tertiary);
                 font-size: 14px;
+                white-space: normal;
 
                 span {
                     margin: 5px 0;
@@ -99,7 +103,7 @@ ion-content {
                 }
             }
 
-            ion-icon.add {
+            ion-icon.action {
                 position: absolute;
                 top: 50%;
                 right: -21px;

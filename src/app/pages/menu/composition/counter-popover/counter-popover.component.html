@@ -2,9 +2,13 @@
     <div class="popover-header">
         <h2 class="popover-title">{{item.name}}</h2>
     </div>
-    <div class="popover-message">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <div
+        *ngIf="errorMessage"
+        class="popover-error"
+    >
+        {{errorMessage}}
     </div>
+    <div class="popover-message">{{item.description}}</div>
     <div class="popover-inputs">
         <ion-icon
             name="remove"
@@ -14,7 +18,7 @@
             #counter
             type="number"
             min="0"
-            max="5"
+            [max]="course === 'extra'? 2 : 1"
             value="0"
             disabled
         >
@@ -27,6 +31,7 @@
         <ion-button
             class="primary"
             expand="block"
+            (click)="addToTray(counter.value)"
         >
             Aggiungi al vassoio
         </ion-button>

@@ -26,10 +26,11 @@ export class MenuService {
         }
     }
 
-    public getMenu(id: number, alternative?: boolean): Observable<MenuCategory> {
+    public getMenu(id: number, alternative?: boolean, diet?: string): Observable<MenuCategory> {
         return this.http.get(`/menu/${id}`, {
             params: new HttpParams()
                 .set('alternative', alternative.toString())
+                .set('diet', diet)
         });
     }
 }

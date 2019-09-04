@@ -1,28 +1,23 @@
 <ion-tabs class="nav">
     <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="schedule">
-            <ion-icon name="person"></ion-icon>
-            <ion-label>Profilo</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button
-            #menu1
-            tab="menu/composition"
-            [class.active]="menu1.selected"
-            (click)="test(menu1)"
-        >
+        <ion-tab-button routerLink="/menu/selection">
             <ion-icon name="restaurant"></ion-icon>
-            <ion-label>Menu (Tra)</ion-label>
+            <ion-label>Menu</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="menu/composition?alternative=true">
+        <ion-tab-button (click)="toComposition()">
             <ion-icon name="pizza"></ion-icon>
-            <ion-label>Menu (Alt)</ion-label>
+            <ion-label>Pietanze</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="menu/summary">
+        <ion-tab-button routerLink="/menu/summary">
             <ion-icon name="phone-landscape"></ion-icon>
             <ion-label>Vassoio</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="presentPopover()">
+            <ion-icon name="more"></ion-icon>
+            <ion-label>Altro</ion-label>
         </ion-tab-button>
     </ion-tab-bar>
 </ion-tabs>

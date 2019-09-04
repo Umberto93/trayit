@@ -1,12 +1,20 @@
 <ion-content>
-    <app-header [title]="titles[activeIndex]"></app-header>
+    <app-header
+        [title]="titles[activeIndex] + (launch ? ' (Pranzo)': ' (Cena)')"
+        filterButton="true"
+    ></app-header>
+    <ion-button (click)="clearStorage()">Svuota</ion-button>
     <ion-slides
         pager="true"
         [options]="slideOptions"
         (ionSlideWillChange)="onSlideWillChange()"
+        (ionSlideDidChange)="onSlideDidChange()"
     >
         <ion-slide *ngFor="let course of menu.items | keyvalue: noSort; index as i">
-            <ion-list lines="none">
+            <ion-list
+                class="items-list"
+                lines="none"
+            >
                 <ion-item
                     *ngFor="let item of course.value"
                     class="item"
@@ -15,7 +23,7 @@
                         class="dish"
                         slot="start"
                     >
-                        <img src="../../../../assets/images/rigatoni_siciliana.png">
+                        <img src="http://localhost:8080/canteen/items/{{item.id}}/image">
                     </ion-thumbnail>
                     <ion-label>
                         <h2 class="name">{{item.name}}</h2>
@@ -29,9 +37,9 @@
                         <small class="price">{{item.price}}</small>
                     </ion-label>
                     <ion-icon
-                        class="add"
+                        class="action add"
                         name="add"
-                        (click)="presentAlert(item)"
+                        (click)="presentAlert(course.key, item)"
                     ></ion-icon>
                 </ion-item>
             </ion-list>

@@ -13,6 +13,18 @@
         }
     }
 
+    .popover-error {
+        margin-bottom: 15px;
+        padding: 12px 5px;
+
+        background: var(--ion-color-danger);
+        border-radius: 3px;
+
+        color: white;
+        font-size: 13px;
+        text-align: center;
+    }
+
     .popover-message {
         color: var(--trayit-color-tertiary);
         font-size: 14px;

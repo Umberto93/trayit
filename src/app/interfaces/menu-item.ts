@@ -6,6 +6,7 @@ export interface MenuItem {
     description?: string,
     price?: number,
     rating?: number,
+    image?: string,
     standard?: boolean,
     celiac?: boolean,
     vegetarian?: boolean,
