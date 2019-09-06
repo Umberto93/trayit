@@ -1,5 +1,6 @@
 export const SlideOptions = {
     centeredSlides: true,
     grabCursor: true,
-    autoHeight: true
+    autoHeight: true,
+    spaceBetween: 20
 };

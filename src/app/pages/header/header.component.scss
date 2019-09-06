@@ -8,7 +8,11 @@ ion-header {
         padding: 10px 0;
 
         ion-back-button {
+            --padding-start: 0;
+            --padding-end: 0;
             --background-hover: none;
+
+            min-width: auto;
         }
 
         ion-title {
@@ -19,7 +23,7 @@ ion-header {
             text-transform: uppercase;
         }
 
-        ion-icon.filter {
+        ion-icon {
             margin-right: 15px;
             font-size: 24px;
             cursor: pointer;
@@ -28,7 +32,7 @@ ion-header {
         ion-item.price {
             ion-icon {
                 margin-right: 5px;
-                
+
                 font-size: 18px;
                 vertical-align: middle;
             }

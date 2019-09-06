@@ -1,0 +1,17 @@
+<ion-content>
+    <app-header
+        title="FaQs"
+        logoutIcon="true"
+    ></app-header>
+    <ion-card
+        *ngFor="let faq of faqs"
+        lines="none"
+        class="card container"
+    >
+        <ion-card-header>
+            <ion-card-title>{{faq.question}}</ion-card-title>
+            <ion-card-subtitle>{{faq.answer}}</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+</ion-content>
+<app-footer></app-footer>

@@ -9,16 +9,7 @@ ion-card {
         color: var(--trayit-color-tertiary);
     }
 
-    ion-list {
-        padding-bottom: 0;
-    }
-
     ion-item {
-        --padding-start: 0;
-        --inner-padding-end: 0;
-        --background-focused: none;
-        --background-hover: none;
-
         margin-top: 10px;
 
         ion-icon {
@@ -51,6 +42,5 @@ ion-card {
         ion-select {
             font-size: 14px;
         }
-        
     }
 }

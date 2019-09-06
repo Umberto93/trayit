@@ -1,3 +1,12 @@
 ion-content {
     --background: linear-gradient(to bottom, var(--trayit-color-primary) 300px, transparent 300px);
+
+    ion-card {
+        ion-item {
+            --padding-start: 0;
+            --inner-padding-end: 0;
+            --background-focused: none;
+            --background-hover: none;
+        }
+    }
 }

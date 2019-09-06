@@ -11,6 +11,12 @@
             slot="end"
             (click)="filter()"
         ></ion-icon>
+        <ion-icon
+            *ngIf="logoutIcon"
+            name="log-out"
+            slot="end"
+            (click)="logout()"
+        ></ion-icon>
         <ion-item
             *ngIf="price"
             class="price"

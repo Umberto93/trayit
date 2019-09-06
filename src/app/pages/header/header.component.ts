@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { UserService } from 'src/app/services/server/user.service';
 
 @Component({
     selector: 'app-header',
@@ -11,10 +12,12 @@ export class HeaderComponent {
     @Input() title: string;
     @Input() filterButton: string;
     @Input() price: string;
+    @Input() logoutIcon: string;
 
     constructor(
         private router: Router,
         private actionSheetController: ActionSheetController,
+        private userService: UserService
     ) { }
 
     public filter(): void {
@@ -66,6 +69,10 @@ export class HeaderComponent {
         }).then(actionSheet => {
             actionSheet.present();
         });
+    }
+
+    public logout(): void {
+        this.userService.logout();
     }
 
 }

@@ -1,0 +1,26 @@
+ion-card {
+    max-width: 1000px;
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    ion-card-header {
+        ion-card-title {
+            color: var(--trayit-color-secondary);
+            font-weight: 600;
+
+            &:before {
+                content: "Q - ";
+            }
+        }
+
+        ion-card-subtitle {
+            margin-top: 20px;
+
+            color: var(--trayit-color-tertiary);
+            line-height: 24px;
+        }
+    }
+}
