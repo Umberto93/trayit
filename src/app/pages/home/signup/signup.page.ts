@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { UserService } from 'src/app/services/server/user.service';
 import { Router } from '@angular/router';
+import { IonInput } from '@ionic/angular';
 
 @Component({
     selector: 'app-signup',
@@ -69,6 +70,10 @@ export class SignupPage {
                 }
             )
         }
+    }
+
+    public moveFocus(input: IonInput): void {
+        input.setFocus();
     }
 
 }

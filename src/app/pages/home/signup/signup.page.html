@@ -9,6 +9,7 @@
             <ion-item lines="none">
                 <ion-label position="stacked">Nome</ion-label>
                 <ion-input
+                    #firstname
                     formControlName="firstname"
                     required="true"
                     type="text"
@@ -25,6 +26,7 @@
             <ion-item lines="none">
                 <ion-label position="stacked">Cognome</ion-label>
                 <ion-input
+                    #lastname
                     formControlName="lastname"
                     required="true"
                     type="text"
@@ -41,10 +43,12 @@
             <ion-item lines="none">
                 <ion-label position="stacked">Email</ion-label>
                 <ion-input
+                    #email
                     formControlName="email"
                     required="true"
                     type="email"
                     (keyup.enter)="onSignup()"
+                    (ionBlur)="moveFocus(pwd)"
                 >
                     <ion-icon
                         class="ion-input-status"
@@ -58,6 +62,7 @@
                 <ion-label position="stacked">Password</ion-label>
                 <ion-checkbox #showPassword></ion-checkbox>
                 <ion-input
+                    #pwd
                     formControlName="password"
                     required="true"
                     [type]="showPassword.checked ? 'text' : 'password'"
@@ -74,6 +79,7 @@
             <ion-item lines="none">
                 <ion-label position="stacked">Regime Alimentare</ion-label>
                 <ion-select
+                    #diet
                     formControlName="diet"
                 >
                     <ion-select-option value="standard">Standard</ion-select-option>

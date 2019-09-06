@@ -7,6 +7,10 @@ ion-header {
         --background: none;
         padding: 10px 0;
 
+        ion-back-button {
+            --background-hover: none;
+        }
+
         ion-title {
             color: var(--trayit-color-secondary);
             font-size: 16px;

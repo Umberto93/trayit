@@ -37,7 +37,6 @@ export class UserService {
             })
         }).pipe(
             map((user: User) => {
-                console.log(user);
                 this.storage.setUser(user);
                 return user;
             })
@@ -46,6 +45,18 @@ export class UserService {
 
     public logout(): void {
         this.storage.removeUser();
+    }
+
+    public getProfile(): Observable<User> {
+        return this.http.get('/users/me');
+    }
+
+    public editProfile(id: number, data: Object): Observable<User> {
+        return this.http.put(`/users/${id}`, data, {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })
+        });
     }
 
 }

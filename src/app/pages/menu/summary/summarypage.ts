@@ -10,7 +10,8 @@ import { Summary } from 'src/app/interfaces/summary';
 })
 export class SummaryPage {
 
-    public summary: Summary;
+    summary: Summary;
+    render: boolean;
 
     constructor(
         private storageService: StorageService,
@@ -18,12 +19,16 @@ export class SummaryPage {
     ) {
         this.summary = {} as Summary;
         this.summary.price = 0;
+        this.render = false;
     }
 
     public ionViewWillEnter(): void {
         this.storageService.getSummary().then(summary => {
             if (summary) {
                 this.summary = summary;
+                setTimeout(() => {
+                    this.render = true;
+                }, 500);
             }
         });
     }

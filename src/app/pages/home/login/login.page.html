@@ -9,10 +9,12 @@
             <ion-item lines="none">
                 <ion-label position="stacked">Email</ion-label>
                 <ion-input
+                    #email
                     formControlName="email"
                     required="true"
                     type="email"
                     (keyup.enter)="onLogin()"
+                    (ionBlur)="moveFocus(pwd)"
                 >
                     <ion-icon
                         class="ion-input-status"
@@ -22,10 +24,11 @@
                     ></ion-icon>
                 </ion-input>
             </ion-item>
-            <ion-item lines="none">
+            <ion-item lines="none" tabindex="2">
                 <ion-label position="stacked">Password</ion-label>
                 <ion-checkbox #showPassword></ion-checkbox>
                 <ion-input
+                    #pwd
                     formControlName="password"
                     required="true"
                     [type]="showPassword.checked ? 'text' : 'password'"

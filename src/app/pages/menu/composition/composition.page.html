@@ -5,6 +5,7 @@
     ></app-header>
     <ion-button (click)="clearStorage()">Svuota</ion-button>
     <ion-slides
+        *ngIf="render"
         pager="true"
         [options]="slideOptions"
         (ionSlideWillChange)="onSlideWillChange()"

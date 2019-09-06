@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { Logged } from 'src/app/services/guards/logged.service';
-import { HeaderComponent } from '../header/header.component';
 import { SelectionPage } from './selection/selection.page';
 import { CompositionPage } from './composition/composition.page';
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CounterPopoverComponent } from './composition/counter-popover/counter-popover.component';
-import { FooterComponent } from '../footer/footer.component';
 import { SummaryPage } from './summary/summarypage';
-import { MorePopoverComponent } from '../footer/more-popover/more-popover.component';
+import { MorePopoverComponent } from 'src/app/pages/footer/more-popover/more-popover.component';
+import { PagesModule } from '../pages.module';
 
 @NgModule({
     imports: [
         CommonModule,
         IonicModule,
+        PagesModule,
         RouterModule.forChild([
             {
                 path: '',
@@ -45,18 +45,14 @@ import { MorePopoverComponent } from '../footer/more-popover/more-popover.compon
         ])
     ],
     declarations: [
-        HeaderComponent,
-        FooterComponent,
         SelectionPage,
         CompositionPage,
         SummaryPage,
         RatingComponent,
-        CounterPopoverComponent,
-        MorePopoverComponent
+        CounterPopoverComponent
     ],
     entryComponents: [
-        CounterPopoverComponent,
-        MorePopoverComponent
+        CounterPopoverComponent
     ]
 })
 export class MenuModule { }

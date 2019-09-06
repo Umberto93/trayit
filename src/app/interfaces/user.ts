@@ -10,6 +10,7 @@ export interface User {
     celiac?: boolean,
     vegetarian?: boolean,
     vegan?: boolean,
+    diet?: string,
     auth?: string,
     isLogged?: boolean
 }

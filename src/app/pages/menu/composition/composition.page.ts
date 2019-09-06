@@ -25,6 +25,7 @@ export class CompositionPage implements OnInit {
     menu: MenuCategory;
     alternative: boolean;
     launch: boolean;
+    render: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -38,6 +39,7 @@ export class CompositionPage implements OnInit {
         this.activeIndex = 0;
         this.menu = {} as MenuCategory;
         this.launch = false;
+        this.render = false;
     }
 
     public ngOnInit() {
@@ -51,6 +53,9 @@ export class CompositionPage implements OnInit {
                 this.menuService.getMenu(type, alternative, diet).subscribe(
                     (menu: MenuCategory) => {
                         this.menu = menu;
+                        setTimeout(() => {
+                            this.render = true;
+                        }, 500);
                     }
                 );
             });

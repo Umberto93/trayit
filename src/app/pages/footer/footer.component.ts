@@ -31,9 +31,11 @@ export class FooterComponent {
         this.router.navigateByUrl(this.route);
     }
 
-    public presentPopover(): void {
+    public presentPopover(event: Event): void {
         this.popoverController.create({
-            component: MorePopoverComponent
+            component: MorePopoverComponent,
+            event: event,
+            cssClass: 'more-popover'
         }).then(popover => {
             popover.present();
         });

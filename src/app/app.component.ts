@@ -21,7 +21,13 @@ export class AppComponent {
     public initializeApp(): void {
         this.platform.ready().then(() => {
             this.statusBar.overlaysWebView(true);
-            this.statusBar.styleDefault();
+
+            if (this.platform.is('android')) {
+                this.statusBar.backgroundColorByHexString('#ffd80c');
+            } else {
+                this.statusBar.styleDefault();
+            }
+
             this.splashScreen.hide();
         });
     }

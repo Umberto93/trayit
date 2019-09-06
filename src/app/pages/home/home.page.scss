@@ -1,120 +1,120 @@
 ion-content {
-  --background: linear-gradient(to bottom, var(--trayit-color-primary) 300px, transparent 300px);
-  text-align: center;
+    --background: linear-gradient(to bottom, var(--trayit-color-primary) 300px, transparent 300px);
+    text-align: center;
 
-  h1 {
-    margin: 60px 0;
-    font-size: 40px;
-  }
+    h1 {
+        margin: 60px 0;
+        font-size: 40px;
+    }
 
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
+    h2 {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
 }
 
 ion-card {
-  text-align: justify;
+    text-align: justify;
 
-  ion-item {
-    --padding-start: 0;
-    --inner-padding-end: 0;
-    --background-focused: none;
-    --background-hover: none;
+    ion-item {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        --background-focused: none;
+        --background-hover: none;
 
-    &:not(:last-child) {
-      margin-bottom: 10px;
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
     }
-  }
 
-  ion-label {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  ion-item.item-has-focus ion-label {
-    color: var(--trayit-color-primary);
-  }
-
-  ion-checkbox {
-    --border-color: rgba(0, 0, 0, 0.1);
-    --border-width: 1px;
-    --background-checked: var(--trayit-color-primary);
-    --border-color-checked: var(--trayit-color-primary);
-
-    position: absolute;
-    top: 14px;
-    right: 0;
-    margin: 0;
-    width: 14px;
-    height: 14px;
-
-    &:before {
-      content: "Show";
-      position: absolute;
-      right: calc(100% + 5px);
-      color: var(--trayit-color-tertiary);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    ion-label {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 600;
     }
-  }
 
-  ion-input,
-  ion-select {
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    --padding-start: 10px;
-    --padding-end: 10px;
-    position: relative;
-
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-
-    font-size: 14px;
-  }
-
-  ion-input {
-    --padding-end: 38px;
-  }
-
-  @keyframes ion-icon-rotate {
-    from {
-      transform: translateY(-50%) rotate(0);
-      opacity: 0;
+    ion-item.item-has-focus ion-label {
+        color: var(--trayit-color-primary);
     }
-    to {
-      transform: translateY(-50%) rotate(720deg);
-      opacity: 1;
+
+    ion-checkbox {
+        --border-color: rgba(0, 0, 0, 0.1);
+        --border-width: 1px;
+        --background-checked: var(--trayit-color-primary);
+        --border-color-checked: var(--trayit-color-primary);
+
+        position: absolute;
+        top: 14px;
+        right: 0;
+        margin: 0;
+        width: 14px;
+        height: 14px;
+
+        &:before {
+            content: "Show";
+            position: absolute;
+            right: calc(100% + 5px);
+            color: var(--trayit-color-tertiary);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     }
-  }
 
-  ion-icon.ion-input-status {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    ion-input,
+    ion-select {
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+        --padding-start: 10px;
+        --padding-end: 10px;
+        position: relative;
 
-    color: var(--ion-color-danger);
-    font-size: 18px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
 
-    &.valid {
-      color: var(--ion-color-success);
+        font-size: 14px;
     }
-  }
 
-  .ng-untouched ion-icon.ion-input-status.valid {
-    animation: ion-icon-rotate 0.5s linear;
-  }
+    ion-input {
+        --padding-end: 38px;
+    }
+
+    @keyframes ion-icon-rotate {
+        from {
+            transform: translateY(-50%) rotate(0);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(-50%) rotate(720deg);
+            opacity: 1;
+        }
+    }
+
+    ion-icon.ion-input-status {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        color: var(--ion-color-danger);
+        font-size: 18px;
+
+        &.valid {
+            color: var(--ion-color-success);
+        }
+    }
+
+    .ng-untouched ion-icon.ion-input-status.valid {
+        animation: ion-icon-rotate 0.5s linear;
+    }
 }
 
 small {
-  display: block;
-  margin-top: 20px;
-  color: var(--trayit-color-tertiary);
-  font-size: 13px;
-  font-weight: 600;
+    display: block;
+    margin-top: 20px;
+    color: var(--trayit-color-tertiary);
+    font-size: 13px;
+    font-weight: 600;
 }

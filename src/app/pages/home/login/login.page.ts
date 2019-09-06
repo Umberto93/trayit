@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/server/user.service';
+import { IonInput } from '@ionic/angular';
 
 @Component({
     selector: 'app-login',
@@ -41,6 +42,10 @@ export class LoginPage {
                 this.router.navigateByUrl('/menu/selection');
             }
         )
+    }
+
+    public moveFocus(input: IonInput): void {
+        input.setFocus();
     }
 
 }
