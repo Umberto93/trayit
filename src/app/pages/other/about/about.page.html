@@ -1,0 +1,22 @@
+<ion-content>
+    <app-header
+        title="Il nostro team"
+        logoutIcon="true"
+    ></app-header>
+    <ion-card
+        class="card container"
+        *ngFor="let member of team"
+    >
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img [src]="member.photo">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{member.name}}</h2>
+                <h3>{{member.role}}</h3>
+                <p>{{member.desc}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-card>
+</ion-content>
+<app-footer></app-footer>

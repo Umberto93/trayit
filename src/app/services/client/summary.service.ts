@@ -135,7 +135,6 @@ export class SummaryService {
                     this.summary.items[course].push(item);
                 }
 
-                this.summary.price = parseInt(this.summary.price.toPrecision(3));
                 this.storage.setSummary(this.summary);
             });
         });

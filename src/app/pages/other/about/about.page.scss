@@ -1,0 +1,35 @@
+ion-card {
+    max-width: 1000px;
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    ion-item {
+        ion-avatar {
+            height: 60px;
+            width: 60px;
+            margin-right: 30px;
+            align-self: flex-start;
+        }
+
+        h2 {
+            color: var(--trayit-color-secondary);
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--trayit-color-tertiary);
+        }
+
+        p {
+            margin-top: 20px;
+            margin-bottom: 0;
+
+            line-height: 24px;
+            white-space: normal;
+        }
+    }
+
+}

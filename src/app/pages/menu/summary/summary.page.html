@@ -26,6 +26,7 @@
                     <rating
                         [max]="5"
                         [value]="item.rating"
+                        (change)="onChange($event, course.key, item.id)"
                     ></rating>
                 </ion-label>
                 <ion-icon

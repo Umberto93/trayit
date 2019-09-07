@@ -5,7 +5,7 @@ import { Faq } from 'src/app/interfaces/faq';
 @Component({
     selector: 'app-faqs',
     templateUrl: './faqs.page.html',
-    styleUrls: ['../other.component.scss', './faqs.page.scss'],
+    styleUrls: ['../other.page.scss', './faqs.page.scss'],
 })
 export class FaqsPage {
 

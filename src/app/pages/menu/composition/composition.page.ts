@@ -48,6 +48,7 @@ export class CompositionPage implements OnInit {
             const alternative = params.has('alternative');
 
             this.storageService.getUser().then(user => {
+                console.log(user);
                 const diet = params.get('diet') || this.getDiet(user);
                 
                 this.menuService.getMenu(type, alternative, diet).subscribe(

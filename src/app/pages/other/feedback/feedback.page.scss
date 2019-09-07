@@ -1,0 +1,29 @@
+ion-item {
+    ion-label {
+        overflow: visible;
+    }
+
+    ion-icon {
+        &.negative {
+            color: salmon;
+        }
+
+        &.positive {
+            color: green;
+        }
+    }
+
+    ion-textarea {
+        min-height: 200px;
+    }
+
+    ion-range {
+        --bar-background: var(--trayit-color-medium);
+        --bar-background-active: var(--trayit-color-primary);
+        --knob-background: var(--trayit-color-primary-dark);
+        --pin-background: var(--trayit-color-primary-dark);
+
+        margin-top: 10px;
+        padding: 0;
+    }
+}

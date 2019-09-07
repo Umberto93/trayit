@@ -1,0 +1,58 @@
+<ion-content>
+    <app-header
+        title="Scrivi una recensione"
+        logoutIcon="true"
+    ></app-header>
+    <ion-card class="card container">
+        <form
+            [formGroup]="feedbackForm"
+            (submit)="onSubmit()"
+        >
+            <ion-item lines="none">
+                <ion-label position="stacked">Titolo</ion-label>
+                <ion-input
+                    formControlName="title"
+                    required="true"
+                    type="text"
+                ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Commento</ion-label>
+                <ion-textarea
+                    formControlName="comment"
+                    required="true"
+                ></ion-textarea>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="stacked">Indice di gradimento</ion-label>
+                <ion-range
+                    #feedback
+                    min="-1"
+                    max="1"
+                    pin="true"
+                    step="1"
+                    value="0"
+                >
+                    <ion-icon
+                        slot="start"
+                        name="sad"
+                        class="negative"
+                    ></ion-icon>
+                    <ion-icon
+                        slot="end"
+                        name="happy"
+                        class="positive"
+                    ></ion-icon>
+                </ion-range>
+            </ion-item>
+            <ion-button
+                class="primary"
+                expand="block"
+                type="submit"
+            >
+                Aggiungi
+            </ion-button>
+        </form>
+    </ion-card>
+</ion-content>
+<app-footer></app-footer>

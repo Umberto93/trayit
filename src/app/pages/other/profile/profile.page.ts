@@ -2,11 +2,12 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/server/user.service';
 import { User } from 'src/app/interfaces/user';
 import { CategoryService } from 'src/app/services/server/category.service';
+import { StorageService } from 'src/app/services/client/storage.service';
 
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.page.html',
-    styleUrls: ['../other.component.scss', './profile.page.scss'],
+    styleUrls: ['../other.page.scss', './profile.page.scss'],
 })
 export class ProfilePage {
 
@@ -15,7 +16,8 @@ export class ProfilePage {
 
     constructor(
         private userService: UserService,
-        private categoryService: CategoryService
+        private categoryService: CategoryService,
+        private storageService: StorageService
     ) {
         this.user = {} as User;
         this.category = '';
@@ -34,7 +36,9 @@ export class ProfilePage {
         if (diet !== this.user.diet) {
             this.userService.editProfile(this.user.id, {
                 diet: diet
-            }).subscribe();
+            }).subscribe(user => {
+                this.storageService.setUser(user);
+            });
         }
     }
 

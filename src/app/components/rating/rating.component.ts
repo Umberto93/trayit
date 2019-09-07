@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'rating',
@@ -6,13 +6,19 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
-    
+
     @Input() max: number;
     @Input() value: number;
     @Input() avg: boolean;
+    @Input() disabled: boolean;
+    @Output() change: EventEmitter<any>;
 
     stars: Array<any>;
     selected: number;
+
+    constructor() {
+        this.change = new EventEmitter();
+    }
 
     ngOnInit() {
         this.stars = new Array(this.max);
@@ -20,12 +26,22 @@ export class RatingComponent implements OnInit {
         this.avg = this.avg || false;
     }
 
-    onMouseEnter(index: number) {
-        this.selected = index + 1;
+    public onMouseEnter(index: number): void {
+        if (!this.disabled) {
+            this.selected = index + 1;
+        }
     }
 
-    onMouseLeave() {
-        this.selected = Math.floor(this.value);
+    public onMouseLeave(): void {
+        if (!this.disabled) {
+            this.selected = Math.floor(this.value);
+        }
+    }
+
+    public onClick(): void {
+        if (!this.disabled) {
+            this.change.emit(this.selected);
+        }
     }
 
 }

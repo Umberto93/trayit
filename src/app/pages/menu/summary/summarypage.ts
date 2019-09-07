@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { StorageService } from 'src/app/services/client/storage.service';
 import { AlertController } from '@ionic/angular';
 import { Summary } from 'src/app/interfaces/summary';
+import { RatingService } from 'src/app/services/server/rating.service';
+import { MenuItem } from 'src/app/interfaces/menu-item';
 
 @Component({
     selector: 'app-summary',
@@ -15,7 +17,8 @@ export class SummaryPage {
 
     constructor(
         private storageService: StorageService,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private ratingService: RatingService
     ) {
         this.summary = {} as Summary;
         this.summary.price = 0;
@@ -57,6 +60,19 @@ export class SummaryPage {
 
     public noSort(): number {
         return 0;
+    }
+
+    public onChange(value: number, course: string, itemId: number): void {
+        this.ratingService.voteItem(itemId, {
+            rating: value
+        }).subscribe(() => {
+            const filteredItem = this.summary.items[course].filter((item: MenuItem) => {
+                return item.id === itemId;
+            })[0] as MenuItem;
+
+            filteredItem.rating = value;
+            this.storageService.setSummary(this.summary);
+        });
     }
 
 }
