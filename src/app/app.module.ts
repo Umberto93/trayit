@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouteReuseStrategy } from '@angular/router';
@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RequestInterceptor } from './services/server/request-interceptor.service';
+import { GlobalErrorHandler } from './services/error/basicErrorHandler';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { RequestInterceptor } from './services/server/request-interceptor.servic
         StatusBar,
         SplashScreen,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        { provide: ErrorHandler, useClass: GlobalErrorHandler },
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]

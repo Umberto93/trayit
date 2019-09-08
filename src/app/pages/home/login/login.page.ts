@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/server/user.service';
 import { IonInput } from '@ionic/angular';
+import { NotificationService } from 'src/app/services/client/notification.service';
 
 @Component({
     selector: 'app-login',
@@ -14,9 +15,10 @@ export class LoginPage {
     loginForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
         private router: Router,
-        private userService: UserService
+        private formBuilder: FormBuilder,
+        private userService: UserService,
+        private notificationService: NotificationService
     ) { 
         this.loginForm = this.formBuilder.group({
             email: new FormControl('', [
@@ -39,6 +41,7 @@ export class LoginPage {
             password: this.loginForm.value.password
         }).subscribe(
             res => {
+                this.notificationService.showSuccess('Login effettuato con successo!');
                 this.router.navigateByUrl('/menu/selection');
             }
         )

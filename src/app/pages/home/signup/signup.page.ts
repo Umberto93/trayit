@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
-import { UserService } from 'src/app/services/server/user.service';
 import { Router } from '@angular/router';
 import { IonInput } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+
+import { UserService } from 'src/app/services/server/user.service';
+import { NotificationService } from 'src/app/services/client/notification.service';
 
 @Component({
     selector: 'app-signup',
@@ -16,7 +18,8 @@ export class SignupPage {
     constructor(
         public router: Router,
         public formBuilder: FormBuilder,
-        public userService: UserService
+        public userService: UserService,
+        public notificationService: NotificationService
     ) {
         this.signupForm = this.formBuilder.group({
             firstname: new FormControl('', [
@@ -66,6 +69,7 @@ export class SignupPage {
                 diet: this.signupForm.value.diet
             }).subscribe(
                 () => {
+                    this.notificationService.showSuccess('Registrazione effettuata con successo.');
                     this.router.navigateByUrl('/login');
                 }
             )

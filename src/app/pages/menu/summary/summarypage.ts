@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { StorageService } from 'src/app/services/client/storage.service';
 import { AlertController } from '@ionic/angular';
+
 import { Summary } from 'src/app/interfaces/summary';
-import { RatingService } from 'src/app/services/server/rating.service';
 import { MenuItem } from 'src/app/interfaces/menu-item';
+
+import { RatingService } from 'src/app/services/server/rating.service';
+import { StorageService } from 'src/app/services/client/storage.service';
+import { NotificationService } from 'src/app/services/client/notification.service';
 
 @Component({
     selector: 'app-summary',
@@ -13,16 +16,19 @@ import { MenuItem } from 'src/app/interfaces/menu-item';
 export class SummaryPage {
 
     summary: Summary;
+    imageError: boolean;
     render: boolean;
 
     constructor(
+        private ratingService: RatingService,
         private storageService: StorageService,
         private alertController: AlertController,
-        private ratingService: RatingService
+        private notificationService: NotificationService
     ) {
         this.summary = {} as Summary;
         this.summary.price = 0;
         this.render = false;
+        this.imageError = false;
     }
 
     public ionViewWillEnter(): void {
@@ -44,8 +50,23 @@ export class SummaryPage {
                 {
                     text: 'Conferma',
                     handler: () => {
-                        this.summary.items[course].splice(itemIndex, 1);
+                        const deletedItem = this.summary.items[course].splice(itemIndex, 1)[0];
+
+                        // Update summary price
+                        if(course === 'extra' && deletedItem.name.toLowerCase() !== 'pane') {
+                            this.summary.price -= deletedItem.price;
+                            this.summary.price = parseFloat(this.summary.price.toPrecision(3));
+                        }
+
+                        // Update summary quantity
+                        this.summary.quantity--;
+
+                        if (this.summary.quantity === 0) {
+                            this.summary.price = 0;
+                        }
+
                         this.storageService.setSummary(this.summary);
+                        this.notificationService.showSuccess('Pietanza rimossa dal vassoio.');
                     }
                 },
                 {
@@ -63,16 +84,37 @@ export class SummaryPage {
     }
 
     public onChange(value: number, course: string, itemId: number): void {
-        this.ratingService.voteItem(itemId, {
-            rating: value
-        }).subscribe(() => {
-            const filteredItem = this.summary.items[course].filter((item: MenuItem) => {
-                return item.id === itemId;
-            })[0] as MenuItem;
+        this.alertController.create({
+            header: 'Conferma Voto',
+            message: `Il tuo voto è ${value}. Confermi?`,
+            buttons: [
+                {
+                    text: 'Conferma',
+                    handler: () => {
+                        this.ratingService.voteItem(itemId, {
+                            rating: value
+                        }).subscribe(() => {
+                            const filteredItem = this.summary.items[course].filter((item: MenuItem) => {
+                                return item.id === itemId;
+                            })[0] as MenuItem;
 
-            filteredItem.rating = value;
-            this.storageService.setSummary(this.summary);
-        });
+                            filteredItem.rating = value;
+                            this.storageService.setSummary(this.summary);
+                            this.notificationService.showSuccess('Voto aggiunto con successo.');
+                        });
+                    }
+                },
+                {
+                    text: 'Annulla',
+                    role: 'cancel'
+                }
+            ]
+        }).then(alert => alert.present());
+    }
+
+    public defaultImage(image: HTMLImageElement) {
+        this.imageError = true;
+        image.src = "../../../../assets/icon/favicon.png";
     }
 
 }

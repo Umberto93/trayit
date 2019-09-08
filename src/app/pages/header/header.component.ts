@@ -73,6 +73,7 @@ export class HeaderComponent {
 
     public logout(): void {
         this.userService.logout();
+        this.router.navigateByUrl('/login');
     }
 
 }

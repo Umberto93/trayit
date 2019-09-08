@@ -7,4 +7,9 @@ ion-content {
         padding-top: 0;
         padding-bottom: 0;
     }
+
+    .error {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
 }

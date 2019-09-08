@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { switchMap, catchError } from 'rxjs/operators';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { StorageService } from '../client/storage.service';
-import { switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,8 @@ import { switchMap } from 'rxjs/operators';
 export class RequestInterceptor implements HttpInterceptor {
 
     constructor(
-        private storage: StorageService
+        private router: Router,
+        private storage: StorageService,
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -24,8 +26,17 @@ export class RequestInterceptor implements HttpInterceptor {
                     })
                 }
 
-                return next.handle(req);
-            })
-        );
+                return next.handle(req)
+                    .pipe(
+                        catchError((err) => {
+                            if (err.status === 401) {
+                                this.storage.removeUser();
+                                this.router.navigateByUrl('/login');
+                            }
+
+                            throw err;
+                        })
+                    );
+            }));
     }
 }

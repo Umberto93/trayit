@@ -48,9 +48,8 @@ export class CompositionPage implements OnInit {
             const alternative = params.has('alternative');
 
             this.storageService.getUser().then(user => {
-                console.log(user);
                 const diet = params.get('diet') || this.getDiet(user);
-                
+
                 this.menuService.getMenu(type, alternative, diet).subscribe(
                     (menu: MenuCategory) => {
                         this.menu = menu;
@@ -62,7 +61,7 @@ export class CompositionPage implements OnInit {
             });
 
             this.titles = this.getSlideTitles(alternative);
-            this.summaryService.initializeSummary(alternative);
+            this.summaryService.initializeSummary(alternative, type);
         });
     }
 
@@ -120,11 +119,4 @@ export class CompositionPage implements OnInit {
         return 'standard';
     }
 
-    public clearStorage() {
-        console.log(true);
-        this.storageService.removeSummary();
-        this.storageService.getSummary().then(summary => {
-            console.log(summary);
-        });
-    }
 }

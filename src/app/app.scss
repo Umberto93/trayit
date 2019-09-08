@@ -68,7 +68,7 @@ ol {
 /** Contents **/
 ion-content {
     --padding-top: 15px;
-    --padding-bottom: 15px;
+    --padding-bottom: 66px;
     --padding-start: 15px;
     --padding-end: 15px;
 }
@@ -125,4 +125,25 @@ ion-popover.counter-popover {
 .more-popover .popover-content {
     top: auto !important;
     bottom: 66px !important;
+}
+
+/** Toasts **/
+ion-toast.success-toast {
+    font-weight: bold;
+    --color: #000;
+    --background: #e7f4e7;
+    --border-width: 0 0 0 5px;
+    --border-style: solid;
+    --border-color: #85c589;
+    --button-color: #85c589;
+}
+
+ion-toast.error-toast {
+    font-weight: bold;
+    --color: #000;
+    --background: #ffe7e1;
+    --border-width: 0 0 0 5px;
+    --border-style: solid;
+    --border-color: #fe8963;
+    --button-color: #fe8963;
 }

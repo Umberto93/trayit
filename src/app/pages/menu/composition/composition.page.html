@@ -3,7 +3,6 @@
         [title]="titles[activeIndex] + (launch ? ' (Pranzo)': ' (Cena)')"
         filterButton="true"
     ></app-header>
-    <ion-button (click)="clearStorage()">Svuota</ion-button>
     <ion-slides
         *ngIf="render"
         pager="true"

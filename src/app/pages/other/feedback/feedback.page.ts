@@ -1,8 +1,10 @@
+import { IonRange } from '@ionic/angular';
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { IonRange } from '@ionic/angular';
-import { FeedbackService } from 'src/app/services/server/feedback.service';
+
 import { StorageService } from 'src/app/services/client/storage.service';
+import { FeedbackService } from 'src/app/services/server/feedback.service';
+import { NotificationService } from 'src/app/services/client/notification.service';
 
 @Component({
     selector: 'app-feedback',
@@ -17,7 +19,8 @@ export class FeedbackPage {
     constructor(
         private formBuilder: FormBuilder,
         private storageService: StorageService,
-        private feedbackService: FeedbackService
+        private feedbackService: FeedbackService,
+        private notificationService: NotificationService
     ) {
         this.feedbackForm = this.formBuilder.group({
             title: new FormControl('', [
@@ -40,7 +43,9 @@ export class FeedbackPage {
                     reaction: this.feedback.value,
                     userid: user.id
                 }).subscribe(feedback => {
-                    console.log(feedback);
+                    this.feedbackForm.reset();
+                    this.feedback.value = 1;
+                    this.notificationService.showSuccess('Feedback inviato con successo.');
                 });
             });
         }

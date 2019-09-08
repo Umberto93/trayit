@@ -1,8 +1,9 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { UserService } from 'src/app/services/server/user.service';
+import { Component } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/server/user.service';
 import { CategoryService } from 'src/app/services/server/category.service';
 import { StorageService } from 'src/app/services/client/storage.service';
+import { NotificationService } from 'src/app/services/client/notification.service';
 
 @Component({
     selector: 'app-profile',
@@ -16,8 +17,9 @@ export class ProfilePage {
 
     constructor(
         private userService: UserService,
+        private storageService: StorageService,
         private categoryService: CategoryService,
-        private storageService: StorageService
+        private notificationService: NotificationService
     ) {
         this.user = {} as User;
         this.category = '';
@@ -38,6 +40,10 @@ export class ProfilePage {
                 diet: diet
             }).subscribe(user => {
                 this.storageService.setUser(user);
+                this.notificationService.showSuccess('Regime alimentate modificato con successo.');
+            },
+            err => {
+                this.notificationService.showError('Non è stato possibile modificare il Regime Alimentare.');
             });
         }
     }

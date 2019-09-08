@@ -1,6 +1,7 @@
 ion-content {
     --background: linear-gradient(to bottom, var(--trayit-color-primary) 300px, transparent 300px);
-
+    --padding-bottom: 66px;
+    
     ion-card {
         max-width: 1000px;
         

@@ -16,7 +16,12 @@
                     class="dish"
                     slot="start"
                 >
-                    <img src="http://localhost:8080/canteen/items/{{item.id}}/image">
+                    <img
+                        #image
+                        [class.error]="imageError" 
+                        src="http://localhost:8080/canteen/items/{{item.id}}/image" 
+                        (error)="defaultImage(image)"
+                    >
                 </ion-thumbnail>
                 <ion-label>
                     <h2 class="name">{{item.name}}</h2>
