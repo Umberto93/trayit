@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 import { Summary } from 'src/app/interfaces/summary';
@@ -7,6 +7,8 @@ import { MenuItem } from 'src/app/interfaces/menu-item';
 import { RatingService } from 'src/app/services/server/rating.service';
 import { StorageService } from 'src/app/services/client/storage.service';
 import { NotificationService } from 'src/app/services/client/notification.service';
+import { MenuService } from 'src/app/services/server/menu.service';
+import { RatingComponent } from 'src/app/components/rating/rating.component';
 
 @Component({
     selector: 'app-summary',
@@ -23,7 +25,8 @@ export class SummaryPage {
         private ratingService: RatingService,
         private storageService: StorageService,
         private alertController: AlertController,
-        private notificationService: NotificationService
+        private notificationService: NotificationService,
+        private menuService: MenuService
     ) {
         this.summary = {} as Summary;
         this.summary.price = 0;
@@ -53,7 +56,7 @@ export class SummaryPage {
                         const deletedItem = this.summary.items[course].splice(itemIndex, 1)[0];
 
                         // Update summary price
-                        if(course === 'extra' && deletedItem.name.toLowerCase() !== 'pane') {
+                        if (course === 'extra' && deletedItem.name.toLowerCase() !== 'pane') {
                             this.summary.price -= deletedItem.price;
                             this.summary.price = parseFloat(this.summary.price.toPrecision(3));
                         }
@@ -83,7 +86,7 @@ export class SummaryPage {
         return 0;
     }
 
-    public onChange(value: number, course: string, itemId: number): void {
+    public onChange(rating: RatingComponent, value: number, course: string, itemId: number): void {
         this.alertController.create({
             header: 'Conferma Voto',
             message: `Il tuo voto è ${value}. Confermi?`,
@@ -98,9 +101,12 @@ export class SummaryPage {
                                 return item.id === itemId;
                             })[0] as MenuItem;
 
-                            filteredItem.rating = value;
-                            this.storageService.setSummary(this.summary);
-                            this.notificationService.showSuccess('Voto aggiunto con successo.');
+                            this.menuService.getItem(itemId, true).subscribe(item => {
+                                rating.selected = item.rating;
+                                filteredItem.rating = item.rating;
+                                this.storageService.setSummary(this.summary);
+                                this.notificationService.showSuccess('Voto aggiunto con successo.');
+                            });
                         });
                     }
                 },

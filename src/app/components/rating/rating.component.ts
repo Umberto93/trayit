@@ -22,8 +22,8 @@ export class RatingComponent implements OnInit {
 
     ngOnInit() {
         this.stars = new Array(this.max);
-        this.selected = Math.floor(this.value);
         this.avg = this.avg || false;
+        this.update(this.value);
     }
 
     public onMouseEnter(index: number): void {
@@ -34,7 +34,7 @@ export class RatingComponent implements OnInit {
 
     public onMouseLeave(): void {
         if (!this.disabled) {
-            this.selected = Math.floor(this.value);
+            this.update(this.value);
         }
     }
 
@@ -42,6 +42,10 @@ export class RatingComponent implements OnInit {
         if (!this.disabled) {
             this.change.emit(this.selected);
         }
+    }
+
+    public update(value: number) {
+        this.selected = Math.round(value);
     }
 
 }

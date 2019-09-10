@@ -3,6 +3,7 @@ import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { MenuCategory } from 'src/app/interfaces/menu-category';
+import { MenuItem } from 'src/app/interfaces/menu-item';
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +32,13 @@ export class MenuService {
             params: new HttpParams()
                 .set('alternative', alternative.toString())
                 .set('diet', diet)
+        });
+    }
+
+    public getItem(id: number, includeRating: boolean): Observable<MenuItem> {
+        return this.http.get(`/items/${id}`, {
+            params: new HttpParams()
+                .set('includeRating', includeRating.toString())
         });
     }
 }

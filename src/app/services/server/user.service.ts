@@ -23,7 +23,7 @@ export class UserService {
     }
 
     public signup(data: SignupForm): Observable<User> {
-        return this.http.post('/signup', data, {
+        return this.http.post('/users', data, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded'
             })

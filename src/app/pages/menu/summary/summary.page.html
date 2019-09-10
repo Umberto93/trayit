@@ -19,7 +19,7 @@
                     <img
                         #image
                         [class.error]="imageError" 
-                        src="http://localhost:8080/canteen/items/{{item.id}}/image" 
+                        src="http://172.19.1.14:8080/canteen/items/{{item.id}}/image" 
                         (error)="defaultImage(image)"
                     >
                 </ion-thumbnail>
@@ -29,9 +29,10 @@
                         <span *ngFor="let ingredient of item.ingredients">{{ingredient.name}}</span>
                     </p>
                     <rating
+                        #rating
                         [max]="5"
                         [value]="item.rating"
-                        (change)="onChange($event, course.key, item.id)"
+                        (change)="onChange(rating, $event, course.key, item.id)"
                     ></rating>
                 </ion-label>
                 <ion-icon
